@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easily</title>
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://kit.fontawesome.com/8ec9d4b7e0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/">easily</a>
+        </div>
+        <div class="container-fluid">
+            <div class="nav-detail">
+                <a href="/">Home</a>
+                <a href="/jobs">Jobs</a>
+            </div>
+            <div class="nav-search">
+                <form action="/searchJob" method="post">
+                    <input type="text" id="search" name="search" onkeyup="searchJob()" placeholder="Search">
+                    <button type="submit" id="search-button">Search</button>
+                </form>
+            </div>
+        </div>
+        <div id="results"></div>
+        <% if(locals.userEmail){ %>
+            <div id="userName" class="nav-detail">
+                <a href="#layout-<%= locals.designation %>">
+                    <%= locals.name %> <i class="fa-solid fa-caret-down"></i>
+                </a>
+
+            </div>
+            <div id="user-layout" class="display-none">
+                <div id="layout-recruiter">
+                    <a href="/getRecruiterMyJob">My Jobs</a>
+                    <a href="/postJob">Post New Job</a>
+                    <a href="/logout">Logout </a>
+                </div>
+                <div id="layout-jobseeker">
+                    <a href="/getJobseekerMyJob">My Jobs</a>
+                    <a href="/logout">Logout </a>
+                </div>
+            </div>
+            <% }else{ %>
+                <div class="nav-detail">
+                    <a href="/login">Login</a>
+                    <a href="/register"> Register</a>
+                </div>
+                <% } %>
+    </nav>
+    <%-body%>
+
+
+        <script src="/layout.js"></script>
+        <script src="/searchJob.js"></script>
+</body>
+
+</html>

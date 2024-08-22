@@ -1,0 +1,41 @@
+## Project overview
+
+
+This application is a web based job-portal platform design to help the jobseekers to get a job.
+
+1.Key Functionalities
+
+
+   * User Authentication:
+
+        Sign up and login for job seekers and employers.
+
+
+    * Job Listings:
+
+        Employers can post job vacancies, update, and delete them.
+
+
+    * Job seekers can search for jobs using various filters (location, job-designation,company-name,skills.).
+
+
+    * Job Applications:
+
+        Job seekers can apply to jobs and can view all their jobs.
+
+
+    * Employers can review applications.
+
+
+    * Profile Management:
+
+        Job seekers can create their profiles, upload resumes.
+
+        Employers can create and manage company profiles.
+
+
+    * Notifications:
+
+        Email notifications for job applications, updates.
+
+        OTP for registration through Email notification.

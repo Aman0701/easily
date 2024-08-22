@@ -1,0 +1,25 @@
+<div class="applicant-table">
+    <table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Job Designation</th>
+            <th scope="col">Last Date</th>
+            <th scope="col">Applicant</th>
+            <th scope="col">View Job</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0;  i < jobs.length;i++){ %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= jobs[i].jobDesignation %></td>
+              <td><%= jobs[i].calender %></td>
+              <td><a href="/applicant/<%= jobs[i].jobId %>"><%= jobs[i].applicant.length %> </a></td>
+              <td><a href="/viewDetail/<%= jobs[i].jobId %>"><button class="button">View</button></a></td>
+            </tr>
+         <% } %>
+         
+        </tbody>
+      </table>
+   </div>

@@ -1,0 +1,44 @@
+<div class="login-div">
+    <div class="login">
+        <% if(msg){ %>
+            <div style="background-color: #d1e7dd; border: 1px solid #a8d2bf;border-radius: 10px;"><p style="color: #14412d; font-size: 1.1rem;">* <%= msg %></p></div>
+        <% } %>
+        <h1>OTP</h1>
+        <form action="/verifyotp" method="post">
+                <input type="hidden" id="email" name="email" value="<%= email %>">
+            <div class="password">
+                <div>OTP</div>
+                <input type="number" id="otp" name="otp" placeholder="enter your OTP.. _ _ _ _ _ _">
+            </div>
+            <button type="submit">Verify</button>
+        </form>
+        <div id="timer">Expires in 08:00</div>
+    </div>
+</div>
+
+<script>
+     function startTimer(duration, display) {
+      let timer = duration, minutes, seconds;
+      const countdownInterval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent ="Expires in " +  minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          clearInterval(countdownInterval); // Stop the timer when it reaches zero
+
+        }
+      }, 1000);
+    }
+
+    // Start the timer when the page loads
+    window.onload = function () {
+      const eightMinutes = 60 * 8, // 8 minutes in seconds
+            display = document.querySelector('#timer'); // Get the timer element
+      startTimer(eightMinutes, display); // Start the timer
+    };
+</script>

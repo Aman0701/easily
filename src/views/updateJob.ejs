@@ -1,0 +1,79 @@
+<div class="postJob">
+    <p>Update Job</p>
+    <form action="/updatePostJob" id="updatePostJob" method="post">
+        <input type="hidden" name="jobId" value="<%= jobs.jobId %>" id="jobId">
+        <div class="job">
+            <select id="jobCategory" name="jobCategory">
+                <option disabled selected>Select Job Category</option>
+                <option value="tech">tech</option>
+                <option value="nonTech"> non-tech</option>
+            </select>
+        </div>
+        <div>
+            <select id="jobDesignation" name="jobDesignation">
+                <option disabled selected>Select Job Designation</option>
+            </select>
+        </div>
+        <div class="jobLocation">
+            <p>Enter job location</p>
+            <input type="text" id="jobLocation" name="jobLocation" value="<%= jobs.jobLocation %>">
+        </div>
+        <div class="salary">
+            <div class="salaryinput">
+                <input type="text" id="salary" name="salary" placeholder="enter salary" value="<%= jobs.salary %>">
+            </div>
+            <div class="positionname">
+                Total Positions
+            </div>
+            <div class="positioninput">
+                <input type="number" id="opening" name="opening" placeholder="total no of openings" value="<%= jobs.opening %>">
+            </div>
+        </div>
+        <div class="skills">
+            <div class="skillsname">
+                <p>select skills required for this job</p>
+                <input type="checkbox" id="react" name="skills" value="React">
+                <label for="react">React</label><br>
+                <input type="checkbox" id="nodeJs" name="skills" value="NodeJs">
+                <label for="nodeJs">NodeJs</label><br>
+                <input type="checkbox" id="angular" name="skills" value="Angular">
+                <label for="angular">Angular</label><br>
+                <input type="checkbox" id="mongoDB" name="skills" value="MongoDB">
+                <label for="mongoDB">MongoDB</label><br>
+                <input type="checkbox" id="sql" name="skills" value="SQL">
+                <label for="sql">SQL</label><br>
+                <input type="checkbox" id="express" name="skills" value="Express">
+                <label for="express">Express</label><br>
+                <input type="checkbox" id="java" name="skills" value="JAVA">
+                <label for="java">JAVA</label><br>
+                <input type="checkbox" id="SpringBoot" name="skills" value="SpringBoot">
+                <label for="SpringBoot">SpringBoot</label><br>
+                <input type="checkbox" id="C++" name="skills" value="C++">
+                <label for="C++">C++</label><br>
+                <input type="checkbox" id="datastructureandalgo" name="skills" value="Data Structure & Algo">
+                <label for="datastructureandalgo">Data Structure & Algo</label><br>
+                <input type="checkbox" id="communication" name="skills" value="Communication">
+                <label for="communication">Communication</label><br>
+                <input type="checkbox" id="leadership" name="skills" value="Leadership">
+                <label for="leadership">Leadership</label><br>
+                <input type="checkbox" id="Problem Solving" name="skills" value="Problem Solving">
+                <label for="problemsolving">Problem Solving</label><br>
+                <input type="checkbox" id="creativity" name="skills" value="Creativity">
+                <label for="creativity">Creativity</label><br>
+                <input type="checkbox" id="networking" name="skills" value="Networking">
+                <label for="networking">Networking</label>
+            </div>
+            <div class="applyBy">
+                Apply By
+            </div>
+            <div class="calender">
+                <input type="date" id="calender" name="calender">
+            </div>
+        </div>
+        <div class="submit">
+            <input type="submit" id="submit">
+        </div>
+    </form>
+</div>
+
+<script src="/postJob.js"></script>

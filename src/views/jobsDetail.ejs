@@ -1,0 +1,103 @@
+<div class="job-details">
+    <div class="detail">
+        <a href="https://www.codingninjas.com/" target="_blank"> <img src="/images/web-banner-28759.png"
+                alt="banner"></a>
+        <div class="detail-head">
+            <h1><span style="color: red;"><%= jobs.jobDesignation %> </span><span style="color: #134a3b;">oppertunity in <%= jobs.jobLocation %> HR IND
+                    REMOTE at</span> <span style="color: #0dcaf0;"><%= jobs.companyName %></span></h1>
+        </div>
+        <div class="job-detail-hiring">
+            <div class="job-detail-active">
+                <button>Actively hiring <i class="fa-solid fa-chart-line"></i></button>
+            </div>
+            <% if(locals.designation == 'recruiter'){ %>
+                <% if(locals.userEmail == jobs.email){ %>
+                    <div class="job-detail-button">
+                        <button style="color: #0dcaf0;" onclick="updateProduct('<%= jobs.jobId %>')"><i class="fa-regular fa-pen-to-square fa-lg"></i></button>
+                        <button style="color: red;" onclick="deleteProduct('<%= jobs.jobId %>')"><i class="fa-regular fa-trash-can fa-lg"></i></button>
+                     </div>
+                <% } %>
+            <% } %>
+           
+               
+            
+        </div>
+        <div class="margin-4">
+            <p style="font-size: 1.5rem;"><%= jobs.companyName %>
+            <p>
+            <p><%= jobs.jobCategory %> <%= jobs.jobDesignation %></p>
+        </div>
+        <div class="job-list">
+            <p><i class="fa-solid fa-street-view"></i> <%= jobs.jobLocation %> HR IND Remote</p>
+            <p><i class="fa-solid fa-indian-rupee-sign"></i> <%= jobs.salary %></p>
+            <p><i class="fa-regular fa-hourglass"></i> Apply By <%= jobs.calender %></p>
+            <p><i class="fa-solid fa-signal"></i> Number of openings: <%= jobs.opening %></p>
+            <% if(locals.userEmail == jobs.email && locals.designation == 'recruiter'){ %>
+                <p><a href="/applicant/<%= jobs.jobId %>" style="color: red; text-decoration: none;"><i class="fa-solid fa-user-group"></i>
+                    Applicants <%= jobs.applicant.length %></a></p>
+            <% }else{ %>
+                <p><i class="fa-solid fa-user-group"></i> Applicants <%= jobs.applicant.length %></p>
+            <% } %>
+            
+        </div>
+        <div class="requirement margin-4">
+           <% if(jobs.skills.length > 0){ %>
+               <% jobs.skills.forEach(skill=>{ %>
+                    <span><%= skill %></span>
+               <% }) %>
+            <% } %>
+        </div>
+        <% if(locals.designation == 'jobseeker'){ %>
+            <% if(jobs.applicant.find(u=> u.email == locals.userEmail)){ %>
+                <div class="margin-top-20px">
+                    <a href="#apply"> <Button type="submit" class="margin-4 apply" style="background-color: red;" disabled>Applied</Button></a>
+                </div>
+            <% }else{ %>
+                <div class="margin-top-20px">
+                    <a href="#apply"> <Button type="submit" class="margin-4 apply">Apply Now</Button></a>
+                </div>
+            <%} %>
+            
+        <% } %>
+        <div class="job-list post-date">
+            <% if(jobs.updated){ %>
+                <p>Updated On: <%= jobs.date %>, <%= jobs.time %></p>
+            <% }else{ %>
+                <p>Posted On: <%= jobs.date %>, <%= jobs.time %></p>
+            <% } %>
+            
+        </div>
+    </div>
+
+</div>
+
+<div id="apply">
+    <p>easily</p>
+    <hr>
+    <div class="applyJob">
+        <p>apply in less than 1 minute</p>
+        <form action="/applyJob" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="jobId" value="<%= jobs.jobId %>">
+            <div class="contact">
+                <div>Contact</div>
+                <input type="tel" id="contact" name="contact" placeholder="+91_ _ _ _  _ _  _ _ _ _" required>
+            </div>
+            <div class="resume">
+                <div>Resume</div>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <hr>
+   <div class="footerButton">
+    <a href="#"><button id="close">Close</button></a>
+    <button id="saveChange">Save Changes</button>
+   </div>
+    <div id="cancle">
+        <a href="#"><i class="fa-solid fa-x fa-lg"></i></a>
+    </div>
+</div>
+
+
+<script src="/jobDetail.js"></script>

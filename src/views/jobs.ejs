@@ -1,0 +1,74 @@
+<div class="main">
+    <div class="jobs">
+        <% if(jobs.length !=0){ %>
+            <% for(let i = (page-1)*3;i < jobs.length && i < (page-1)*3 + 3; i++){%>
+                <div class="job-detail">
+                    <div class="hiring">
+                        <h3>Actively hiring <i class="fa-solid fa-chart-line"></i></h3>
+                    </div>
+                    <div class="company-name">
+                        <h2>
+                            <%= jobs[i].companyName %>
+                        </h2>
+                    </div>
+                    <div class="typeofjob">
+                        <%= jobs[i].jobCategory %> <span>
+                                <%= jobs[i].jobDesignation %>
+                            </span>
+                    </div>
+                    <hr>
+                    <div class="location">
+                        <p><i class="fa-solid fa-location-dot"></i>
+                            <%= jobs[i].jobLocation %> HR IND Remote
+                        </p>
+                        <p><i class="fa-solid fa-indian-rupee-sign"></i>
+                            <%= jobs[i].salary %>
+                        </p>
+
+                    </div>
+                    <div class="requirement">
+                        <% if(jobs[i].skills){ %>
+                            <% jobs[i].skills.forEach(skill=>{ %>
+                                <span>
+                                    <%= skill %>
+                                </span>
+                                <% }) %>
+                                    <% } %>
+                    </div>
+                    <a href="/viewDetail/<%= jobs[i].jobId %>">
+                        <div class="viewDetail">View details</div>
+                    </a>
+                </div>
+
+         <% } %>
+      <% } %>
+    </div>
+
+    <div class="pagenation">
+        <% if(page > 1){ %>
+            <% if(!query){ %>
+                <a href="/jobs?page=<%= page-1 %>"><div id="prev"><i class="fa-solid fa-arrow-left"></i>&nbsp; PREV</div></a>
+               <% }else{ %>
+                <a href="/searchJob?q=<%= query %>&page=<%= page-1 %>"><div id="prev"><i class="fa-solid fa-arrow-left"></i> &nbsp;PREV</div></a>
+            <% } %>
+        <% } %>
+        <% for(let i = 0; i < totalPage.length; i++){ %>
+            <% if(totalPage[i] == '...'){ %>
+                &nbsp;&nbsp;<span>...</span>
+            <% }else{ %>
+               <% if(!query){ %>
+                <a href="/jobs?page=<%= totalPage[i] %>"><div><%= totalPage[i] %></div></a>
+               <% }else{ %>
+                <a href="/searchJob?q=<%= query %>&page=<%= totalPage[i] %>"><div><%= totalPage[i] %></div></a>
+               <% } %>
+            <% } %>
+        <% } %>
+        <% if(page < totalPage[totalPage.length-1]){ %>
+            <% if(!query){ %>
+                <a href="/jobs?page=<%= parseFloat(page)+1 %>"><div id="prev">NEXT&nbsp;<i class="fa-solid fa-arrow-right"></i></div></a>
+               <% }else{ %>
+                <a href="/searchJob?q=<%= query %>&page=<%= parseFloat(page)+1 %>"><div id="prev">NEXT&nbsp;<i class="fa-solid fa-arrow-right"></i></div></a>
+            <% } %>
+        <% } %>
+    </div>
+</div>

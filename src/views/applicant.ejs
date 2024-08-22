@@ -1,0 +1,26 @@
+<div class="applicant-table">
+    <table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Resume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% jobs.applicant.forEach(j=>{ %>
+            <tr>
+              <td><%= j.num %></td>
+              <td><%= j.name %></td>
+              <td><%= j.email %></td>
+              <td><%= j.contact %></td>
+              <td><a href="/view?url=<%= j.resumeUrl %>&email=<%= j.email %>" target="_blank"><button class="button">View</button></a>
+                  <a href="/download?url=<%= j.resumeUrl %>&email=<%= j.email %>"><button class="button">Download</button></a></td>
+            </tr>
+         <% }) %>
+         
+        </tbody>
+      </table>
+   </div>

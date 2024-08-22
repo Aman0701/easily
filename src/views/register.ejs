@@ -1,0 +1,55 @@
+<div class="login-div">
+    <div class="register">
+        <h1>Register</h1>
+        <form action="/register" method="post">
+            <% if(errorMessage){ %>
+                <div style="background-color: #f8d7da; border: 1px solid #f3bdc2;border-radius: 10px;"><p style="color: #7f453a; font-size: 1.1rem;">* <%= errorMessage %></p></div>
+            <% } %>
+            <div class="email">
+                <div>Name</div>
+                <input type="text" id="name" name="name" placeholder="enter your name...">
+            </div>
+            <div class="email">
+                <div>Email</div>
+                <input type="email" id="email" name="email" placeholder="enter your email...">
+            </div>
+
+            <div id="designation">
+                <div>
+                    <input type="radio"  name="designation" value="recruiter">
+                <label for="designation">I'm Recruiter</label>
+                </div>
+                <div>
+                    <input type="radio"  name="designation" value="jobseeker">
+                <label for="designation">I'm Jobseeker</label>
+                </div>
+            </div>
+            <div class="email" id="jobseeker">
+                <div>College Name</div>
+                <input type="text" id="collegeName" name="college" placeholder="enter your college Name...">
+            </div>
+            <div class="email" id="recruiter">
+                <div>Company Name</div>
+                <input type="text" id="companyName" name="company" placeholder="enter your company Name...">
+            </div>
+            <div class="password">
+                <div>Password</div>
+                <input type="password" id="password" name="password" placeholder="enter your password">
+                <p id="passwordinfo"><ul>
+                    <li>
+                        Password must contain 8 to 15 characters 
+                    </li>
+                    <li>
+                        Password must have atleast on number
+                    </li>
+                    <li>
+                        Password must contain atleast one uppercase character
+                    </li>
+                </ul></p>
+
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+<script src="register.js"></script>
